@@ -13,8 +13,6 @@ const useAppStore = defineStore('app', () => {
   const mode = ref(theme)
 
   const swithMode = (val: string) => {
-    console.log(val)
-
     mode.value = val
   }
 
