@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import useAppStore from '@/stores/modules/app'
+
+const appStore = useAppStore()
 const route = useRoute()
 const { t } = useI18n()
 
@@ -19,37 +22,43 @@ const topNavList = [
     path: '/about',
   },
 ]
-
 const display = computed(() => {
   if (route.meta.level && route.meta.level !== 2)
     return true
   return false
 })
+
+const mode = computed(() => {
+  return appStore.mode === 'dark'
+})
+function swithMode() {
+  appStore.swithMode(appStore.mode === 'dark' ? 'light' : 'dark')
+}
 </script>
 
 <template>
   <transition name="fade" mode="out-in">
-    <div v-show="display" class="topNav flex-center-center h-60 max-w-1200">
+    <div
+      v-show="display" class="flex-center-center fixed left-50% top-20 h-60 max-w-1200 -translate-x-1/2"
+    >
       <div
-        v-for="item in topNavList" :key="item.id" class="item mx-10 cursor-pointer text-24"
+        v-for="item in topNavList" :key="item.id" class="mx-10 cursor-pointer text-24"
+        :class="route.path === item.path ? 'text-blue' : 'text-black'"
         @click="$router.push(item.path)"
       >
         {{ item.name }}
       </div>
     </div>
   </transition>
+
+  <div class="fixed right-20 top-20">
+    <n-switch v-model:value="mode" size="large" @update:value="swithMode">
+      <template #checked-icon>
+        <div class="i-carbon:light h-1em w-1em" />
+      </template>
+      <template #unchecked-icon>
+        <div class="i-carbon:moon h-1em w-1em" />
+      </template>
+    </n-switch>
+  </div>
 </template>
-
-<style lang="less" scoped>
-.topNav {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  transition: all 1s;
-}
-
-.item {
-}
-</style>
