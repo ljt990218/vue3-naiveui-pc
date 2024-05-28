@@ -19,9 +19,9 @@ getProse()
 </script>
 
 <template>
-  <div class="h-200vh pt-80 text-center text-20">
+  <div class="h-200vh pt-80 text-center text-20 .dark:text-yellow">
     index
-    <div class="color-yellow">
+    <div class="color-yellow .dark:text-white">
       {{ message }}
     </div>
   </div>
