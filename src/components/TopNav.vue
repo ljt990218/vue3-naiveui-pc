@@ -32,6 +32,7 @@ const mode = computed(() => {
   return appStore.mode === 'dark'
 })
 function swithMode() {
+  toggleDark()
   appStore.swithMode(appStore.mode === 'dark' ? 'light' : 'dark')
 }
 </script>
