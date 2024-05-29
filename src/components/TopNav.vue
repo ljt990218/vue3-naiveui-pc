@@ -38,7 +38,7 @@ function swithMode() {
 </script>
 
 <template>
-  <transition name="fade" mode="out-in">
+  <transition name="fade" mode="out-in" class="duration-200">
     <div
       v-show="display" class="flex-center-center fixed left-50% top-20 h-60 max-w-1200 -translate-x-1/2"
     >
