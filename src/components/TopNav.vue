@@ -40,7 +40,7 @@ function swithMode() {
 <template>
   <transition name="fade" mode="out-in" class="duration-200">
     <div
-      v-show="display" class="flex-center-center fixed left-50% top-20 h-60 max-w-1200 -translate-x-1/2"
+      v-show="display" class="flex-center-center fixed left-50% h-60 w-1700 bg-white pt-20 shadow -translate-x-1/2"
     >
       <div
         v-for="item in topNavList" :key="item.id" class="mx-10 cursor-pointer text-24"
